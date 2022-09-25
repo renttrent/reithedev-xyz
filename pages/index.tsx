@@ -1,11 +1,112 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { useScroll, useTransform, motion } from "framer-motion";
+import {
+  useScroll,
+  useTransform,
+  motion,
+  AnimatePresence,
+} from "framer-motion";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { MdClose } from "react-icons/md";
 
 var scroll = 0;
 
 const subscribe = (callback: any) => {};
+
+const Navbar = () => {
+  const [show, setShow] = useState(false);
+
+  return (
+    <div>
+      <div className="hidden xl:block fixed w-full z-40">
+        <div className="flex flex-row justify-between items-center mx-10 p-4">
+          <button className="cursor-pointer text-2xl text-zima-500 font-bold logo">
+            reithedev<span className="text-zima-400">.</span>
+          </button>
+          <div className="text-xl font-semibold text-white w-1/3 flex flex-row justify-between items-center">
+            <Link href="/">
+              <button className="cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
+                home
+              </button>
+            </Link>
+            <Link href="/about">
+              <button className="cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
+                about
+              </button>
+            </Link>
+            <Link href="/blog">
+              <button className="cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
+                blog
+              </button>
+            </Link>
+            <Link href="/projects">
+              <button className="cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
+                projects
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="xl:hidden block">
+        <div className="flex flex-row justify-between items-center mx-10 p-4">
+          <button className="cursor-pointer text-2xl text-zima-500 font-bold logo">
+            reithedev<span className="text-zima-400">.</span>
+          </button>
+          <span onClick={() => setShow(true)}>
+            <GiHamburgerMenu className={`text-2xl text-zima-500`} />
+          </span>
+        </div>
+        <AnimatePresence>
+          {show && (
+            <div className="fixed left-0 top-0 h-screen w-screen z-20">
+              <motion.div
+                className="bg-black/40 h-screen w-screen"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              />
+              <motion.div
+                className="absolute top-0 h-screen w-4/6 left-1/3 -translate-x-1/2 bg-night border-l-4 border-zima-500  p-10 text-zima-50 font-bold flex flex-col gap-10"
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ duration: 0.4, ease: "easeInOut", delay: 0.2 }}
+              >
+                <span
+                  onClick={() => setShow(false)}
+                  className={`text-4xl text-zima-500 mb-20`}
+                >
+                  <MdClose />
+                </span>
+                <Link href="/">
+                  <button className="w-fit text-3xl text-left cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
+                    home
+                  </button>
+                </Link>
+                <Link href="/about">
+                  <button className="w-fit text-3xl text-left cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
+                    about
+                  </button>
+                </Link>
+                <Link href="/blog">
+                  <button className="w-fit text-3xl text-left cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
+                    blog
+                  </button>
+                </Link>
+                <Link href="/projects">
+                  <button className="w-fit text-3xl text-left cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
+                    projects
+                  </button>
+                </Link>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+};
 
 const Home: NextPage = () => {
   const { scrollY } = useScroll();
@@ -48,35 +149,7 @@ const Home: NextPage = () => {
           </button>
         </div>
       </motion.div>
-      <div className="fixed w-full z-40">
-        <div className="flex flex-row justify-between items-center mx-10 p-4">
-          <button className="cursor-pointer text-2xl text-zima-500 font-bold logo">
-            reithedev<span className="text-zima-400">.</span>
-          </button>
-          <div className="text-xl font-semibold text-white w-1/3 flex flex-row justify-between items-center">
-            <Link href="/">
-              <button className="cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
-                home
-              </button>
-            </Link>
-            <Link href="/about">
-              <button className="cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
-                about
-              </button>
-            </Link>
-            <Link href="/blog">
-              <button className="cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
-                blog
-              </button>
-            </Link>
-            <Link href="/projects">
-              <button className="cursor-pointer hover:text-zima-400 transition-all ease-in-out duration-300 border-b-2 border-transparent outline-none focus-visible:outline-none focus:border-zima-400">
-                projects
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>
+      <Navbar />
       <motion.div
         className="fixed w-screen h-1/2 top-1/4 xl:top-0 xl:h-screen"
         style={{ opacity: 1 - scrollLevel * 0.003 }}
@@ -141,7 +214,7 @@ const Home: NextPage = () => {
           scroll
         </div> */}
       </motion.div>
-      <div className="absolute top-full w-90 left-1/2 -translate-x-1/2 h-90 bg-red-500">
+      <div className="absolute top-full w-90 left-1/2 -translate-x-1/2 h-90 bg-night">
         <motion.div
           className="text-4xl text-black"
           initial={{ opacity: 0 }}
