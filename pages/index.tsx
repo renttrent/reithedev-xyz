@@ -154,7 +154,7 @@ const Home: NextPage = () => {
         className="fixed w-screen h-1/2 top-1/4 xl:top-0 xl:h-screen"
         style={{ opacity: 1 - scrollLevel * 0.003 }}
       >
-        <div className="absolute w-2/3 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 grid grid-cols-1 xl:grid-cols-2 gap-20">
+        <div className="absolute w-2/3 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 grid grid-cols-1 xl:grid-cols-2 gap-10 xl:gap-20">
           <div className="grid xl:w-5/6 gap-4">
             <div className="font-extrabold text-3xl xl:text-5xl playfair text-blue-50/90 test">
               Hi, I am Rei
@@ -166,12 +166,12 @@ const Home: NextPage = () => {
               Making useful systems with beautiful designs.
             </div>
             <Link href="mailto:reiballa@gmail.com">
-              <button className="mt-10 w-full text-lg xl:text-2xl p-3 text-zima-500 border-2 border-zima-300 rounded-sm action-shadow hover:text-white">
+              <button className="font-sans font-bold mt-4 xl:mt-10 w-full text-lg xl:text-2xl p-3 text-zima-500 border-2 border-zima-300 rounded-sm action-shadow hover:text-white">
                 hire me.
               </button>
             </Link>
           </div>
-          <div className="relative w-full h-fit border-2 border-zima-200/10 rounded-md">
+          <div className="relative w-full h-fit border-4 border-zima-200/10 rounded-xl">
             {/* <div className="w-72 xl:w-96 -z-20 h-52 xl:h-80"> */}
             {/* <div className="absolute top-2 grid gap-3 xl:gap-4 w-full">
                   {[...Array(10)].map((_, i) => (
@@ -184,28 +184,34 @@ const Home: NextPage = () => {
                   ))}
                 </div> */}
             <motion.div
-              className="absolute w-10 h-10 rounded-full bg-zima-400/70"
-              initial={{ x: 40, y: 50 }}
+              className="absolute w-6 xl:w-10 h-6 xl:h-10 rounded-full bg-zima-400/70"
+              initial={{ x: 20, y: 50 }}
               whileDrag={{ scale: 1.4 }}
               drag
               dragConstraints={{ left: 10, right: 150, top: 10, bottom: 180 }}
             />
             <motion.div
-              className="absolute w-10 h-10 rounded-full bg-zima-400/70"
-              initial={{ x: 60, y: 50 }}
+              className="absolute w-6 h-6 xl:w-10 xl:h-10 rounded-full bg-zima-400/70"
+              initial={{ x: 40, y: 50 }}
               whileDrag={{ scale: 1.4 }}
               drag
               dragConstraints={{ left: 10, right: 150, top: 10, bottom: 180 }}
             />
-            <div className="playfair font-extrabold italic text-white/90 text-xl xl:text-3xl grid gap-4 w-full text-center p-10">
+            <div className="playfair font-extrabold italic text-white/90 text-xl xl:text-3xl grid gap-4 w-fit m-auto p-10 -z-10">
               <Link href="https://www.github.com/renttrent">
-                <button className="w-1/3 m-auto social">github</button>
+                <button className="text-left w-fit m-auto social">
+                  github
+                </button>
               </Link>
               <Link href="https://www.linkedin.com/in/reiballa">
-                <button className="w-1/3 m-auto social">linkedin</button>
+                <button className="text-left w-fit m-auto social">
+                  linkedin
+                </button>
               </Link>
               <Link href="https://www.twitter.com/reithedev">
-                <button className="w-1/3 m-auto social">twitter</button>
+                <button className="text-left w-fit m-auto social">
+                  twitter
+                </button>
               </Link>
             </div>
           </div>
