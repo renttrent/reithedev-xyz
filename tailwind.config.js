@@ -16,6 +16,12 @@ module.exports = {
         },
         night: "#111313",
       },
+      width: {
+        90: "90vw",
+      },
+      height: {
+        90: "90vh",
+      },
     },
   },
   plugins: [],
